@@ -1,0 +1,11 @@
+@use "../styles/colors";
+@import "../fonts/stylesheet.css";
+
+* {
+  font-family: "Open Sans", Arial, sans-serif;
+}
+body {
+  margin: 0;
+  background: colors.$black;
+  color: colors.$white;
+}

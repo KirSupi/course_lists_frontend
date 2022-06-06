@@ -1,0 +1,137 @@
+@use "../../styles/colors";
+
+#panel{
+  padding-top: 5rem;
+  #smsCenter {
+    width: fit-content;
+    margin: 0 auto 2rem auto;
+    padding: 3rem 4rem;
+    background: colors.$main-darken;
+    //box-shadow: 0 0 10px 1px colors.$main;
+    p {
+      width: fit-content;
+      margin: 0;
+      font-size: 1.2em;
+      font-weight: bolder;
+    }
+  }
+  #towers{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    .tower{
+      //box-shadow: 0 0 10px 1px colors.$main;
+      padding: 3rem 4rem;
+      p {
+        width: fit-content;
+        margin: 0;
+      }
+    }
+  }
+  #phonesAndSMS{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    #phones {
+      margin: 2rem;
+      width: 15rem;
+    }
+    #sms{
+      margin: 2rem;
+      width: 25rem;
+      max-height: 40vh;
+      overflow-y: auto;
+      .sms{
+        border-bottom: 1px solid colors.$main-darken;
+        p{
+          span{
+            color: colors.$gray;
+          }
+        }
+      }
+      .sms:last-of-type{
+        border-bottom: none;
+      }
+    }
+  }
+}
+.phone, .tower {
+  transition-duration: 0.15s;
+  background: colors.$main-darken;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+}
+.phone:hover, .tower:hover {
+  background: colors.$main;
+}
+.phone:hover:focus, .tower:hover:focus {
+  background: colors.$main-lighten;
+}
+.add {
+  text-align: center;
+  border: dashed 5px colors.$main-darken !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+.add:hover {
+  border-color: colors.$main;
+}
+div[hasUnreadMessage]{
+  animation: unread 2s infinite ease-in-out;
+  //border-width: 5px;
+  //border-style: solid;
+}
+div[selected]{
+  border-color: transparent;
+}
+@keyframes unread {
+  0% {
+    //border-color: transparent;
+    box-shadow: 0 0 10px 1px colors.$main;
+  }
+  50% {
+    //border-color: colors.$main-lighten;
+    box-shadow: 0 0 5px 3px colors.$main;
+  }
+  100% {
+    //border-color: transparent;
+    box-shadow: 0 0 10px 1px colors.$main;
+  }
+}
+#popUpContainer{
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  transition-duration: 0.3s;
+  #popUpBackground{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #popUpContent{
+      background: colors.$black;
+      border: 1px solid colors.$main-darken;
+      box-shadow: 0 0 10px 1px colors.$main;
+      padding: 3rem 2rem;
+      height: fit-content;
+    }
+  }
+}
+#popUpContainer[opened]{
+  opacity: 1;
+  visibility: visible;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  input {
+    margin-bottom: 0.5rem;
+  }
+}
